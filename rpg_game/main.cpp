@@ -2,8 +2,8 @@
 
 int main()
 {
-    Game game;
-    game.run();
+    Game game; // Create an instance of the Game class
+    game.run(); // Call the run function
 
     return 0;
 }
