@@ -4,7 +4,10 @@
 GameState::GameState(sf::RenderWindow* window)
 	: State(window)
 {
+  
 }
+
+
 
 GameState::~GameState()
 {
@@ -12,14 +15,21 @@ GameState::~GameState()
 
 void GameState::end_state()
 {
+	std::cout << "Ending GameState" << std::endl;
+}
+
+void GameState::update_keybinds(const float& dt)
+{
+	this->check_for_quit();
 }
 
 void GameState::update(const float dt)
 {
-	
+	this->update_keybinds(dt);
+	this->player.update(dt);
 }
 
 void GameState::render(sf::RenderTarget* target)
 {
-	std::cout << "Rendering GameState" << std::endl;	
+	this->player.render(this->window);
 }

@@ -46,15 +46,12 @@ Game::~Game() {
 	} 
 }
 
-void Game::update_dt()
-{
-	/* Updates the delta time variable with the tine it takes to update and render one frame */
+// Function Realisation 
+void Game::end_application() {
 
-	this->dt = this->dtClock.restart().asSeconds(); // Update the delta time variable
-
+	std::cout << "Ending Application" << std::endl;
 }
 
-// Function Realisation 
 void Game::update_sfml_events()
 {
 	while (this->window->pollEvent(this->sfml_event)) // Polls the event and stores it in the sfml_event
@@ -64,12 +61,34 @@ void Game::update_sfml_events()
 	}
 }
 
+void Game::update_dt()
+{
+	/* Updates the delta time variable with the tine it takes to update and render one frame */
+
+	this->dt = this->dtClock.restart().asSeconds(); // Update the delta time variable
+
+}
+
 void Game::update()
 {
 	this->update_sfml_events();
 
-	if (!this->states.empty())// If the stack is not empty
+	if (!this->states.empty()) { // If the stack is not empty
+
 		this->states.top()->update(this->dt); // Update the top state
+
+		if (this->states.top()->get_quit()) { // If the top state is quit
+
+			this->states.top()->end_state(); // End the top state
+			delete this->states.top(); // Delete the top state
+			this->states.pop(); // Remove the top state
+		}
+	}
+	//Applicaion end
+	else {
+		this->end_application();
+		this->window->close(); // Close the window if the stack is empty and there are no states in the stack
+	}
 }
 
 void Game::render()
