@@ -8,17 +8,18 @@ class GameState:
 private:
 	Entity player;
 
-public:
-	GameState(sf::RenderWindow* window);
+	//Functions 
+	void init_keybinds(); // Initialise the keybinds
 
-	~GameState();
+public:
+	GameState(sf::RenderWindow* window, std::map<std::string, int>* supported_keys); // Constructor with parameters 
+
+	virtual ~GameState(); // Destructor 
 
 	//Functions 
 	void end_state(); // End the state
-	void update_keybinds(const float& dt); // Update the keybinds of the player 
+	void update_input(const float& dt); // Update the input of the state 
 	void update(const float dt); // Update the state
 	void render(sf::RenderTarget* target = NULL);  // Render the state
-
-
 };
 

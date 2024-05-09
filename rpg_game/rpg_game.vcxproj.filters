@@ -53,5 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="windiw.ini" />
+    <None Include="supported_keys.ini" />
+    <None Include="gamestate_keys.ini" />
   </ItemGroup>
 </Project>

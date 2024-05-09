@@ -26,13 +26,32 @@ void Game::init_window()
 
 void Game::init_states()
 {
-	this->states.push(new GameState(this->window)); // Push a new game state onto the stack
+	this->states.push(new GameState(this->window, &this->supported_keys)); // Push a new game state onto the stack
+}
+
+void Game::init_keys()
+{ // Add the supported keys to the map
+	std::ifstream ifs("D:\\projectC++\\GameDemo\\rpgGame\\rpg_game\\rpg_game\\supported_keys.ini"); // Open the file supported_keys.ini
+	if (ifs.is_open()) {// If the file is open
+		std::string key = ""; // Create a string variable called key
+		int key_value = 0; // Create an integer variable called key_value
+		while(ifs >> key >> key_value) { // While the file is not at the end
+			this->supported_keys[key] = key_value; // Add the key and value to the map
+		}
+	} 
+
+	ifs.close(); // Close the file
+
+	for (auto i : this->supported_keys) {
+		std::cout << i.first << " " << i.second << std::endl; // Output the key and value to the console
+	}	
 }
 
 //Constructors / Destructors
 Game::Game() {
 
 	this->init_window(); // Initialise the window
+	this->init_keys(); // Initialise the keys
 	this->init_states(); // Initialise the states
 }
 

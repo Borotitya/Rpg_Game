@@ -19,14 +19,7 @@ void Entity::move(const float& dt, const float direction_x, const float directio
 
 void Entity::update(const float& dt)
 {
-	if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))	// If the A key is pressed
-		this->move(dt, -1.f, 0.f); // Move the shape left
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))	// If the D key is pressed
-		this->move(dt, 1.f, 0.f); // Move the shape right
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))	// If the W key is pressed
-		this->move(dt, 0.f, -1.f); // Move the shape up
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))	// If the S key is pressed
-		this->move(dt, 0.f, 1.f); // Move the shape down
+	
 }
 
 void Entity::render(sf::RenderTarget* target)

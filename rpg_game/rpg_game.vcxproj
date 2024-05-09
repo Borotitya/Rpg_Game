@@ -146,6 +146,8 @@
     <ClInclude Include="State.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="gamestate_keys.ini" />
+    <None Include="supported_keys.ini" />
     <None Include="windiw.ini" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

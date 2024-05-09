@@ -13,9 +13,12 @@ private:
 
 	std::stack<State*> states; // Stack of pointers to the base class State
 
+	std::map<std::string, int> supported_keys; // Map of supported keys
+
 	//Initializations 
-	void init_window(); 
-	void init_states();
+	void init_window();  // Initialise the window
+	void init_states(); // Initialise the states
+	void init_keys(); // Initialize the supported keys
 public:
 	//Constructors / Destructors
 	Game();
@@ -24,7 +27,7 @@ public:
 	//Functions 
 	
 	//Regular
-	void end_application();
+	void end_application(); // End the application
 
 	//Update functions
 	void update_dt(); // Update delta time
